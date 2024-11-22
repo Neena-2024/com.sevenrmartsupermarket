@@ -52,17 +52,19 @@ public class LoginPage {
 	public void clickSignInButton() {
 		signInButton.click();
 	}
-	public void login(String userName,String password) {
+	public HomePage login(String userName,String password) {
 		enterUserName(userName);
 		enterPassword(password);
-		clickSignInButton();	
+		clickSignInButton();
+		return new HomePage(driver);
 	}
-	public void login() {
+	public HomePage login() {
 		String userName=properties.getProperty("username");
 		String passWord=properties.getProperty("password");
 		enterUserName(userName);
 		enterPassword(passWord);
 		clickSignInButton();
+		return new HomePage(driver);
 	}
 	public boolean signInButtonEnabled() {
 		

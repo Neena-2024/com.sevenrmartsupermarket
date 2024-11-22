@@ -22,8 +22,9 @@ public class HomePage {
 	{
 		return profileName.getText();
 	}
-	public void clickSubCategory() {
+	public SubcategoryPage clickSubCategory() {
 		subCategory.click();
+		return new SubcategoryPage(driver);
 	}
 	
 }
