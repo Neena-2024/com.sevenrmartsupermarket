@@ -104,5 +104,8 @@ public class SubcategoryPage {
 		clickonSearchButtobRed();
 		
 	}
+	public void sampleGit() {
+		
+	}
 
 }
