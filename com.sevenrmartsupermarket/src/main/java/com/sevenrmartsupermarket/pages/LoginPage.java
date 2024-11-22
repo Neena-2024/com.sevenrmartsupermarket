@@ -77,7 +77,5 @@ public class LoginPage {
 		GeneralUtility generalutility=new GeneralUtility();
 		return invalidLoginAlert.getText();
 	}
-	public void newMethod() {
-		
-	}
+	
 }
