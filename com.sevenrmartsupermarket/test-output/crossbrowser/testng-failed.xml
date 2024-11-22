@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="6" parallel="tests" name="Failed suite [crossbrowser]">
+  <listeners>
+    <listener class-name="com.sevenrmartsupermarket.listeners.ExtentReporter"/>
+  </listeners>
+  <test thread-count="6" parallel="tests" name="runningInfirefox(failed)">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="com.sevenrmartsupermarket.tests.LoginTest">
+        <methods>
+          <include name="terminateBrowser"/>
+          <include name="launchBrowser"/>
+          <include name="verifyInvalidLoginDetails"/>
+          <include name="verifyAdminUserLogin"/>
+          <include name="verifyloginButtonIsEnabled"/>
+        </methods>
+      </class> <!-- com.sevenrmartsupermarket.tests.LoginTest -->
+    </classes>
+  </test> <!-- runningInfirefox(failed) -->
+</suite> <!-- Failed suite [crossbrowser] -->

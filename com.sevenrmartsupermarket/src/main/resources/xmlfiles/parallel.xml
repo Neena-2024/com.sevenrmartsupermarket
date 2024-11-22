@@ -1,0 +1,32 @@
+<suite name="supermartrelease" thread-count="6" parallel="tests">
+	<listeners>
+		<listener class-name="com.sevenrmartsupermarket.listeners.ExtentReporter"></listener>
+	</listeners>
+	<test name="hometest">
+		<classes>
+
+			<class name="com.sevenrmartsupermarket.tests.HomeTest">
+				
+			</class>
+
+		</classes>
+	</test>
+	<test name="logintest">
+		<classes>
+
+			<class name="com.sevenrmartsupermarket.tests.LoginTest">
+				
+			</class>
+
+		</classes>
+	</test>
+	<test name="subcategory">
+		<classes>
+
+			<class name="com.sevenrmartsupermarket.tests.SubcategoryTest">
+				
+			</class>
+
+		</classes>
+	</test>
+</suite>

@@ -1,0 +1,20 @@
+<suite name="supermartrelease">
+	<listeners>
+		<listener
+			class-name="com.sevenrmartsupermarket.listeners.ExtentReporter"></listener>
+	</listeners>
+	<test name="logintestgrouping">
+	<groups>
+	 <run>
+	<include name="sanity"/>
+	</run>
+	</groups>
+		<classes>
+
+			<class name="com.sevenrmartsupermarket.tests.LoginTest"></class>
+			<class name="com.sevenrmartsupermarket.tests.HomeTest"></class>
+			<class name="com.sevenrmartsupermarket.tests.SubcategoryTest"></class>
+		</classes>
+	</test>
+	
+</suite>	
