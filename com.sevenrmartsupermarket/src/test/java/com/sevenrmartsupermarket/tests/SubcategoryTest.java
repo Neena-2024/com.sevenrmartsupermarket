@@ -42,7 +42,6 @@ public class SubcategoryTest extends Base {
 		actualList=subcategorypage.getSearchResult();
 		System.out.println(actualList);
 		
-		
 		List<String> expectedList=new ArrayList<String>();
 		expectedList.add("Mobile");
 		 System.out.println(expectedList);
