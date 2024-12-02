@@ -27,5 +27,11 @@ public class WaitUtility {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Xpath)));
 		
 	}
+	public void waitForAlertText(WebElement element,long duration)
+	{
+		wait=new WebDriverWait(driver, Duration.ofSeconds(duration));
+		wait.until(ExpectedConditions.alertIsPresent());
+	}
+	
 
 }

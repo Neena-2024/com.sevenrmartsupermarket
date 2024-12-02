@@ -42,6 +42,9 @@ public class PageUtility {
 	public void acceptJSAlert() {
 		driver.switchTo().alert().accept();
 	}
+	public void dismissJSAlert() {
+		driver.switchTo().alert().dismiss();
+	}
 
 	public boolean isClicked(WebElement element) {
 		try {

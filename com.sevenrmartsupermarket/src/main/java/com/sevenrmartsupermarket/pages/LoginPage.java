@@ -40,7 +40,7 @@ public class LoginPage {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		}
+	}
 	public void enterUserName(String username) {
 		userNameField.sendKeys(username);
 	

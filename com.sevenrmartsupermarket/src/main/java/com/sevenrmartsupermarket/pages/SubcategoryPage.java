@@ -13,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.sevenrmartsupermarket.constants.Constants;
 import com.sevenrmartsupermarket.utilities.GeneralUtility;
 import com.sevenrmartsupermarket.utilities.PageUtility;
+import com.sevenrmartsupermarket.utilities.WaitUtility;
 
 import net.bytebuddy.asm.MemberSubstitution.FieldValue;
 
@@ -36,29 +37,33 @@ public class SubcategoryPage {
 	private WebElement newButton;
 	@FindBy(xpath="//button[@type='submit']")
 	private WebElement saveButton;
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-	private WebElement alertelement;
+	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']//h5[contains(text(),'Alert!')]")
+	private WebElement newAlert;
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-warning']")
 	private WebElement resetButton;
+	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[4]")
+	private WebElement statusButton;
+	@FindBy(xpath="//input[@type='file']")
+	private WebElement imageFileButton;
+	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[5]//i[@class='fas fa-trash-alt']")
+	private WebElement deleteButton;
+	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']//h5[contains(text(),'Alert')]")
+	private WebElement alertDeletion;
 	
 	GeneralUtility generalutility=new GeneralUtility();
 	
 	public SubcategoryPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-
 	}
-
 	public void clickOnSearchIcon() {
 		searchicon.click();
 	}
-
 	public void selectCategory(String category) {
 		PageUtility pageutility = new PageUtility(driver);
 		pageutility.selectByvisibleText(categorydropdown, category);
 		categorydropdown.sendKeys(category);
 	}
-
 	public void enterSubCategory(String subCategory) {
 		subcategoryfield.click();
 		subcategoryfield.sendKeys(subCategory);
@@ -71,14 +76,11 @@ public class SubcategoryPage {
 		selectCategory(category);
 		enterSubCategory(subCategory);
 		clickonSearchButtobRed();
-		
 	}
 	public List<String> getSearchResult() {
 		List<String> list=new ArrayList<String>();
-		
 		list=generalutility.getTextOfElements(table);
 		return list;
-		
 	}
 	public String resultNotfoundMeggaseVerification() {
 		return generalutility.getTextValue(errorResult);
@@ -88,11 +90,9 @@ public class SubcategoryPage {
 		selectCategory(category);
 		enterSubCategory(subCategory);
 		saveButton.click();
-		
 	}
 	public String subCtegoryCreatedSuccessfullyMessageVerification() {
-		
-		return generalutility.getTextValue(alertelement);
+		return generalutility.getTextValue(newAlert);
 	}
 	public boolean resetButtonIsEnabled() {
 		return resetButton.isEnabled();
@@ -102,10 +102,22 @@ public class SubcategoryPage {
 		selectCategory(category);
 		enterSubCategory(subCategory);
 		clickonSearchButtobRed();
-		
 	}
-	public void sampleGit() {
-		
+	public void addingNewSubcategoryWithImage(String category,String subCategory) {
+		newButton.click();
+		selectCategory(category);
+		enterSubCategory(subCategory);
+		imageFileButton.sendKeys(Constants.IMAGEFILE_PATH);
+		saveButton.click();
 	}
-
+	public void clickDeleteSubcategoryDetails() {
+		WaitUtility waitutility=new WaitUtility(driver);
+		waitutility.waitForElementToBeClickable(deleteButton, 20);
+		deleteButton.click();
+		driver.switchTo().alert().accept();
+	}
+	public String subcategoryDeletedSuccessfullyMessageDeletion() {
+		return generalutility.getTextValue(alertDeletion);
+	}
+	
 }

@@ -20,13 +20,10 @@ public class LoginTest extends Base {
 		String passwordData=excelreader.getCellData(1,1);
 		loginpage = new LoginPage(driver);
 		homepage=new HomePage(driver);
-		
 		loginpage.login(usernameData,passwordData);
 		String actualProfilename=homepage.getProfileName();
 		String expectedProfileName="Admin";
 		Assert.assertEquals(actualProfilename, expectedProfileName);
-		
-		
 	}
 	@Test(groups="sanity") 
 	public void verifyloginButtonIsEnabled() {
@@ -40,20 +37,13 @@ public class LoginTest extends Base {
 		boolean actualStatus=loginpage.checkBoxEnabled();
 		Assert.assertTrue(actualStatus);
 	}
-	
 	@Test(groups= {"smoke","regression"})
 	public void verifyInvalidLoginDetails() { 
 		loginpage=new LoginPage(driver);
-		loginpage.login("invalid", "invalid");
-		
-		
-		String actualalert=loginpage.getAlertText();
+		loginpage.login("invalid", "invalid");String actualalert=loginpage.getAlertText();
 		System.out.println(actualalert);
 		String expectedalert="Alert!";
-		System.out.println(expectedalert);
-		Assert.assertEquals(actualalert, expectedalert);		
-				
-		
+		Assert.assertEquals(actualalert, expectedalert);	
 	}
 
 }
